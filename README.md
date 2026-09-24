@@ -1,4 +1,4 @@
-# 🍽️ MesaFácil
+# 🍽️ MesaFácil  
 
 Sistema fullstack para gerenciamento de operações de salão, envolvendo **mesas, pedidos, cozinha, caixa, cardápio e turnos**.
 
