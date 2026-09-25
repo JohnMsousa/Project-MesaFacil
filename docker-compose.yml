@@ -1,0 +1,29 @@
+services:
+  mesa-facil-db:
+    image: "postgres:14-alpine"
+    container_name: mesa-facil-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: mesa_facil_db
+    volumes:
+      - mesa-facil-db:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./mesa-facil-api
+      dockerfile: Dockerfile
+    container_name: mesa-facil-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mesa-facil-db
+    environment:
+      DB_URL: jdbc:postgresql://mesa-facil-db:5432/mesa_facil_db
+      DB_USERNAME: postgres
+      DB_PASSWORD: 123456
+
+volumes:
+  mesa-facil-db:
