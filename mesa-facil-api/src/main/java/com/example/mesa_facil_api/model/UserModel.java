@@ -1,9 +1,9 @@
 package com.example.mesa_facil_api.model;
 
+import com.example.mesa_facil_api.model.enums.RoleEnum;
+import com.example.mesa_facil_api.shared.audit.Audit;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserModel {
+public class UserModel extends Audit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +27,7 @@ public class UserModel {
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
 
-    @Column(nullable = false, length = 20)
-    private String role;
-
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private RoleEnum role;
 }

@@ -1,5 +1,6 @@
 package com.example.mesa_facil_api.model;
 
+import com.example.mesa_facil_api.shared.audit.Audit;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AuditLogModel {
+public class AuditLogModel extends Audit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +37,4 @@ public class AuditLogModel {
 
     @Column(columnDefinition = "JSON")
     private String metadata;
-
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
 }

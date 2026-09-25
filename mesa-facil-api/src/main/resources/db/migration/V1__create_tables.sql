@@ -3,8 +3,7 @@ CREATE TABLE users (
     name VARCHAR(150) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password_hash TEXT NOT NULL,
-    role VARCHAR(20) NOT NULL DEFAULT 'waiter'
-        CHECK (role IN ('waiter', 'cashier', 'manager', 'admin')),
+    role VARCHAR(20),
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL
 );

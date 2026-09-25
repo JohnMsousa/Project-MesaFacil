@@ -1,5 +1,6 @@
 package com.example.mesa_facil_api.model;
 
+import com.example.mesa_facil_api.shared.audit.Audit;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OrderItemModel {
+public class OrderItemModel extends Audit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,12 +39,6 @@ public class OrderItemModel {
 
     @Column(nullable = false, length = 20)
     private String status;
-
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
 
     @Column(name = "canceled_at")
     private LocalDateTime canceledAt;

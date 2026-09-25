@@ -1,5 +1,6 @@
 package com.example.mesa_facil_api.model;
 
+import com.example.mesa_facil_api.shared.audit.Audit;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MenuItemModel {
+public class MenuItemModel extends Audit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +32,5 @@ public class MenuItemModel {
     @Column(nullable = false)
     private Boolean available;
 
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
 }
